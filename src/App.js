@@ -3,10 +3,12 @@ import List from './components/List';
 import Alert from './components/Alert';
 import Form from './components/Form';
 
+const { v4: uuid } = require('uuid');
+
 const initialExpenses = [
-  {id: 1, charge:"rent", amount: 1600},
-  {id: 2, charge:"car", amount: 5000},
-  {id: 3, charge:"tax", amount: 200}
+  {id: uuid(), charge:"rent", amount: 1600},
+  {id: uuid(), charge:"car", amount: 5000},
+  {id: uuid(), charge:"tax", amount: 200}
 ]
 
 console.log(initialExpenses)
