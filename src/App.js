@@ -52,8 +52,11 @@ const handleSubmit = e => {
       let tempExpenses = expenses.map(item => {
         return item.id === id? {...item, charge, amount} :item
       });
+      if(JSON.stringify(tempExpenses) !== JSON.stringify(expenses))
+      {
+        handleAlert({type: 'success', text: 'Edited'})
+      }
       setExpenses(tempExpenses);
-      handleAlert({type: 'success', text: 'Edited'})
       setEdit(false);
       
     }
