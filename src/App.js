@@ -13,13 +13,15 @@ const initialExpenses = [
 ];
 
 function App() {
-  //state values
+ 
+//state values
 const [expenses, setExpenses] = useState(initialExpenses);  
 
 const[charge, setCharge] = useState('');
 const[amount, setAmount] = useState('');
 const[alert, setAlert] = useState({show: false});
-  //functionality
+  
+//functionality
 const handleCharge = e =>{
   setCharge(e.target.value);
 }
@@ -43,15 +45,31 @@ const handleSubmit = e => {
     setExpenses([...expenses, singleExpense]);
     setCharge('');
     setAmount('');
-    handleAlert({type: 'success', text:'muie ovi'})
+    handleAlert({type: 'success', text:'success'})
   }
   else
   {
     //alert
-    handleAlert({type: 'danger', text:'muie fane'})
+    handleAlert({type: 'danger', text:'fail'})
   }
-
 }
+
+//clear all
+const clearItems = () =>{
+  setExpenses([]); 
+  handleAlert({type: 'success', text:'cleared all the items'})
+}
+
+const handleDelete = (id) => {
+  let tempExpenses = expenses.filter(item => item.id !== id)
+  setExpenses(tempExpenses)
+  handleAlert({type: 'success', text:'cleared item'})
+}
+
+const handleEdit = (id) => {
+  
+}
+
   return (
     <>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
@@ -65,7 +83,10 @@ const handleSubmit = e => {
           handleCharge={handleCharge}
           handleSubmit={handleSubmit}>
         </Form>
-        <List expenses={expenses}></List>
+        <List expenses={expenses}
+        handleDelete = {handleDelete}
+        handleEdit = {handleEdit}
+        clearItems = {clearItems}></List>
       </main>
       <h1>
         total spending: <span className='total'>
