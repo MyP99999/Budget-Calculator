@@ -5,7 +5,8 @@ export default function Form({charge,
   amount, 
   handleCharge, 
   handleAmount, 
-  handleSubmit
+  handleSubmit,
+  edit
 }) {
   return (
     <form onSubmit={handleSubmit}>
@@ -20,7 +21,7 @@ export default function Form({charge,
               name='charge' 
               placeholder='e.g. rent'
               value={charge}
-              onChange={handleCharge}
+              onChange={handleCharge} 
             />
           </div>
         </div>
@@ -40,7 +41,7 @@ export default function Form({charge,
         </div>
         </div>
         <button type='submit' className='btn'>
-          submit
+          {edit?'edit':'submit'}
         </button>
       
     </form>
